@@ -20,7 +20,7 @@
     <section>
       <h2>Plan a practice rental</h2>
       <p>This is a class demonstration. No rental is booked, and your entries are not sent or saved. Use sample details to try the form. Required fields are marked “required.”</p>
-      <p>Sample daily rates: daypack $10, trekking poles $5 per pair, and rain jacket $8. A total calculator will be added in a future update.</p>
+      <p>Sample daily rates: daypack $10, trekking poles $5 per pair, and rain jacket $8. Choose equipment quantities and rental days, then calculate your total.</p>
     </section>
     <form id="rental-form">
       <fieldset>
@@ -55,6 +55,12 @@
         <label for="notes">Equipment sizes or other notes (optional)</label>
         <textarea id="notes" name="notes" rows="4" maxlength="1000"></textarea>
       </fieldset>
+      <fieldset>
+        <legend>Rental estimate</legend>
+        <div class="form-actions"><button type="button" id="calculate">Calculate total</button></div>
+        <p>Total: <output id="rental-total" for="days daypacks poles jackets" aria-live="polite">Not calculated</output></p>
+        <p id="calculation-status" role="status"></p>
+      </fieldset>
       <div class="form-actions"><button type="submit">Check practice form</button><button type="reset" class="secondary">Clear form</button></div>
       <p id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -63,6 +69,32 @@
   <script>
     const form = document.querySelector('#rental-form');
     const status = document.querySelector('#form-status');
+    const totalOutput = document.querySelector('#rental-total');
+    const calculationStatus = document.querySelector('#calculation-status');
+    const rentalFields = ['days', 'daypacks', 'poles', 'jackets'].map(id => document.getElementById(id));
+    const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+    function clearEstimate() {
+      totalOutput.value = 'Not calculated';
+      calculationStatus.textContent = '';
+    }
+    document.querySelector('#calculate').addEventListener('click', function () {
+      clearEstimate();
+      for (const field of rentalFields) {
+        if (!field.reportValidity()) return;
+      }
+      const [days, daypacks, poles, jackets] = rentalFields.map(field => Number(field.value));
+      if (daypacks + poles + jackets === 0) {
+        calculationStatus.textContent = 'Choose at least one piece of equipment to calculate a total.';
+        return;
+      }
+      const dailyTotal = daypacks * 10 + poles * 5 + jackets * 8;
+      totalOutput.value = currency.format(dailyTotal * days);
+      calculationStatus.textContent = currency.format(dailyTotal) + ' per day × ' + days + (days === 1 ? ' day.' : ' days.');
+    });
+    rentalFields.forEach(field => {
+      field.addEventListener('input', clearEstimate);
+      field.addEventListener('change', clearEstimate);
+    });
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       const quantities = ['daypacks', 'poles', 'jackets'];
@@ -71,7 +103,7 @@
         ? 'Your practice form is complete. No reservation was made and no information was sent.'
         : 'Choose at least one piece of equipment by entering a quantity greater than zero.';
     });
-    form.addEventListener('reset', function () { status.textContent = ''; });
+    form.addEventListener('reset', function () { status.textContent = ''; clearEstimate(); });
     form.addEventListener('input', function () { status.textContent = ''; });
   </script>
 </body>
