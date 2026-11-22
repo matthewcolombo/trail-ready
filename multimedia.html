@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore day hiking through a National Park Service video and hiking photo gallery.">
+  <title>Hiking Multimedia | Trail Ready</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="label">CSCI434 | Course Portfolio</p>
+      <h1>Explore the outdoors</h1>
+      <p class="subtitle">Hiking through video and photography</p>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="multimedia.html" aria-current="page">Hiking Multimedia</a>
+        <a href="rental.html">Equipment Rental</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="section-nav" aria-label="On this page">
+      <a href="#hiking-video">Video</a>
+      <a href="#hiking-gallery">Photo gallery</a>
+    </nav>
+    <section id="hiking-video" aria-labelledby="video-heading">
+      <h2 id="video-heading">A glimpse of hiking</h2>
+      <p>This short National Park Service video introduces hiking as a way to experience the outdoors. Use the player controls to start, pause, and adjust playback.</p>
+      <iframe class="hiking-video" src="https://www.nps.gov/media/video/embed.htm?id=5D418D92-1DD8-B71B-0B5A1DCDADA01539" title="National Park Service video introducing the benefits of hiking" loading="lazy" allowfullscreen></iframe>
+      <p><a href="https://www.nps.gov/media/video/embed.htm?id=5D418D92-1DD8-B71B-0B5A1DCDADA01539">Open the video player directly</a> or visit the <a href="https://www.nps.gov/articles/000/hiking.htm">National Park Service hiking article</a>.</p>
+      <p><strong>Video summary:</strong> This 46-second National Park Service clip highlights the benefits of hiking as a way to get outdoors and spend time in nature.</p>
+      <p>For related information in text, visit the NPS <a href="https://www.nps.gov/subjects/trails/benefits-of-hiking.htm">Benefits of Hiking</a> page.</p>
+    </section>
+    <section id="hiking-gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading">Views from the trail</h2>
+      <p>This gallery pairs hiking photographs with descriptions and source credits. These are National Park Service images, rather than photographs from my own trips.</p>
+      <div class="photo-grid">
+        <figure>
+          <img src="images/hiking-overlook.jpg" alt="Two hikers with backpacks sit on a rocky overlook above rolling green hills." width="1400" height="788" loading="lazy">
+          <figcaption>A pause at a scenic overlook. Source: <a href="https://www.nps.gov/subjects/trails/index.htm">National Park Service</a>.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/hiker-sunset.jpg" alt="A hiker with a blue backpack walks along a trail with sunlit cliffs in the distance." width="1400" height="788" loading="lazy">
+          <figcaption>A trail beneath a colorful sky. Source: <a href="https://www.nps.gov/subjects/trails/index.htm">National Park Service</a>.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container">Trail Ready | Unit 3 | CSCI434 Web Programming</div></footer>
+</body>
+</html>

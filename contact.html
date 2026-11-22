@@ -13,7 +13,7 @@
       <p class="label">CSCI434 | Course Portfolio</p>
       <h1>Contact Matt</h1>
       <p class="subtitle">Questions and feedback about Trail Ready</p>
-      <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="#contact-form">Contact form</a></nav>
+      <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="multimedia.html">Multimedia</a><a href="#contact-form">Contact form</a></nav>
     </div>
   </header>
   <main class="container">
@@ -43,7 +43,7 @@
       <fieldset>
         <legend>Optional background</legend>
         <div class="form-grid">
-          <div><label for="contact-date">Preferred follow-up date</label><input id="contact-date" name="followUpDate" type="date"></div>
+          <div id="follow-up-date"><label for="contact-date">Preferred follow-up date</label><input id="contact-date" name="followUpDate" type="date"></div>
           <div><label for="contact-hikes">Approximate hikes per year</label><input id="contact-hikes" name="hikesPerYear" type="number" min="0" max="366" step="1"></div>
         </div>
       </fieldset>
@@ -61,15 +61,35 @@
       <p id="contact-status" role="status" aria-live="polite"></p>
     </form>
   </main>
-  <footer><div class="container">Trail Ready | Unit 2 | CSCI434 Web Programming</div></footer>
+  <footer><div class="container">Trail Ready | Unit 3 | CSCI434 Web Programming</div></footer>
   <script>
     const contactForm = document.querySelector('#contact-form');
     const contactStatus = document.querySelector('#contact-status');
+    const emailReply = document.querySelector('#reply-email');
+    const noReply = document.querySelector('#reply-none');
+    const followUpDateGroup = document.querySelector('#follow-up-date');
+    const followUpDate = document.querySelector('#contact-date');
+    function updateFollowUpDate() {
+      if (emailReply.checked) {
+        followUpDateGroup.hidden = false;
+        followUpDate.disabled = false;
+      } else {
+        followUpDateGroup.hidden = true;
+        followUpDate.disabled = true;
+        followUpDate.value = '';
+      }
+    }
+    emailReply.addEventListener('change', updateFollowUpDate);
+    noReply.addEventListener('change', updateFollowUpDate);
+    updateFollowUpDate();
     contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
       contactStatus.textContent = 'Your practice form is complete. No message was sent or saved.';
     });
-    contactForm.addEventListener('reset', function () { contactStatus.textContent = ''; });
+    contactForm.addEventListener('reset', function () {
+      contactStatus.textContent = '';
+      setTimeout(updateFollowUpDate, 0);
+    });
     contactForm.addEventListener('input', function () { contactStatus.textContent = ''; });
     contactForm.addEventListener('change', function () { contactStatus.textContent = ''; });
     document.querySelector('#contact-submit').disabled = false;
