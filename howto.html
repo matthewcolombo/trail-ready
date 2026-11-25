@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn a simple process for organizing a day-hike backpack, with photos, video, and a packing assistant.">
+  <title>Pack a Day-Hike Backpack | Trail Ready</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="label">CSCI434 | Course Portfolio</p>
+      <h1>Pack for a day hike</h1>
+      <p class="subtitle">Gather, organize, and check your backpack</p>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="multimedia.html">Multimedia</a>
+        <a href="howto.html" aria-current="page">How-To</a>
+        <a href="rental.html">Equipment Rental</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="section-nav" aria-label="On this page"><a href="#packing-steps">Packing steps</a><a href="#packing-video">Video</a><a href="#packing-assistant">Ask a question</a></nav>
+    <section id="packing-steps" aria-labelledby="steps-heading">
+      <h2 id="steps-heading">Get organized before you leave</h2>
+      <p>Practice packing at home so you know where your equipment is. Adjust your choices to the route, weather, and park guidance.</p>
+      <ol class="packing-steps">
+        <li><h3>Check your plans</h3><p>Review the route and conditions, and tell someone your destination and expected return time.</p></li>
+        <li><h3>Gather your essentials</h3><p>Use the NPS checklist: navigation, sun protection, extra clothing, lighting, first aid, fire supplies where permitted, repair tools, extra food, water and treatment supplies, and emergency shelter.</p></li>
+        <li><h3>Balance the load</h3><p>Put denser items near the pack’s center and keep the sides balanced. Fill gaps so equipment does not shift.</p></li>
+        <li><h3>Keep frequent-use items accessible</h3><p>Use convenient pockets for snacks, water, a map, and sun protection. Keep your rain layer and headlamp easy to reach.</p></li>
+        <li><h3>Try it on and check again</h3><p>Close the pack, adjust its straps, and walk around at home. Reorganize anything that shifts and check your list before leaving.</p></li>
+      </ol>
+      <p>Sources: <a href="https://www.nps.gov/articles/10essentials.htm">NPS Ten Essentials</a> and <a href="https://www.rei.com/learn/expert-advice/loading-backpack.html">REI backpack-packing guidance</a>.</p>
+      <div class="photo-grid">
+        <figure><img src="images/hiking-overlook.jpg" alt="Two hikers wearing backpacks rest on a rocky overlook above green hills." loading="lazy"><figcaption>Plan for pauses as well as walking. Photo: <a href="https://www.nps.gov/subjects/trails/index.htm">National Park Service</a>.</figcaption></figure>
+        <figure><img src="images/hiker-sunset.jpg" alt="A hiker carries a blue backpack along a trail with cliffs in the distance." loading="lazy"><figcaption>Practice carrying your packed bag before the trip. Photo: <a href="https://www.nps.gov/subjects/trails/index.htm">National Park Service</a>.</figcaption></figure>
+      </div>
+    </section>
+    <section id="packing-video" aria-labelledby="video-heading">
+      <h2 id="video-heading">Remember the Ten Essentials</h2>
+      <p>This short NPS clip introduces the essential gear categories. Use the written checklist above alongside the video.</p>
+      <iframe class="hiking-video" src="https://www.nps.gov/media/video/embed.htm?id=7686DEED-53E1-4FDC-A703-B135F07DE5AF" title="National Park Service Ten Essentials video" loading="lazy" allowfullscreen></iframe>
+      <p><a href="https://www.nps.gov/media/video/view.htm?id=7686DEED-53E1-4FDC-A703-B135F07DE5AF">Open the video and descriptive transcript</a>. Credit: NPS / Ranger Peelee.</p>
+    </section>
+    <section id="packing-assistant" aria-labelledby="assistant-heading">
+      <h2 id="assistant-heading">Ask the packing assistant</h2>
+      <p>Ask about the packing steps or organizing your equipment. Check park guidance for current conditions.</p>
+      <p id="chat-status" role="status">Loading the packing assistant…</p>
+      <div id="chat-messages" class="chat-messages" role="log" aria-label="Packing conversation" aria-live="polite" aria-relevant="additions text"></div>
+      <form id="chat-form" data-endpoint="https://trail-ready-chat.matt-s-colombo.workers.dev/">
+        <label for="chat-question">Your packing question</label>
+        <textarea id="chat-question" name="question" rows="3" maxlength="1000" required disabled></textarea>
+        <p>When connected, your question is sent to the AI service to generate a reply. Avoid sharing personal information.</p>
+        <div class="form-actions"><button id="chat-send" type="submit" disabled>Send question</button><button id="chat-clear" type="button" class="secondary">Clear conversation</button></div>
+      </form>
+      <noscript><p>Enable JavaScript to use the packing assistant.</p></noscript>
+    </section>
+  </main>
+  <footer><div class="container">Trail Ready | Unit 4 | CSCI434 Web Programming</div></footer>
+</body>
+</html>

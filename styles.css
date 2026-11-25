@@ -229,6 +229,17 @@ nav a[aria-current="page"] {
   margin-top: 0;
 }
 
+[hidden] { display: none !important; }
+.packing-steps { padding-left: 28px; }
+.packing-steps > li { padding: 8px 0 16px 8px; border-bottom: 1px solid var(--color-divider); }
+.packing-steps h3 { margin-bottom: 6px; }
+.chat-messages { max-height: 360px; overflow-y: auto; overflow-wrap: anywhere; }
+.chat-messages > p { padding: 14px; background: #fff; border: 1px solid var(--color-divider); border-radius: 6px; white-space: pre-wrap; }
+button, nav a { transition: background-color .2s ease, color .2s ease; }
+button:not(:disabled):hover { background: var(--color-link); color: white; }
+nav a:hover { text-decoration-thickness: 3px; }
+@media (prefers-reduced-motion: reduce) { button, nav a { transition: none; } }
+
 @media (max-width: 600px) {
   header {
     padding: 40px var(--gutter);
